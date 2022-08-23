@@ -14,8 +14,8 @@ from sklearn.neighbors import NearestNeighbors
 
 #stopw = set(stopwords.words('english'))
 
-stopwords = nltk.corpus.stopwords.words('english')
-print(stopwords[:10])
+stopw = nltk.corpus.stopwords.words('english')
+#print(stopwords[:10])
 
 nl = nltk.download('stopwords')
 
@@ -26,7 +26,7 @@ df = pd.read_csv('mum.csv')
 #df = pd.read_csv('mum.csv', sep='|', encoding='cp1252')
 
 df['test'] = df['Job_Description'].apply(
-    lambda x: ' '.join([word for word in str(x).split() if len(word) > 2 and word not in (stopwords)]))
+    lambda x: ' '.join([word for word in str(x).split() if len(word) > 2 and word not in (stopw)]))
 
 app = Flask(__name__)
 
