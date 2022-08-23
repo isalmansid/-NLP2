@@ -6,13 +6,15 @@ import pandas as pd
 import re
 from ftfy import fix_text
 import nltk
-nltk.download()
+
 from nltk.corpus import stopwords
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 
 stopw = set(stopwords.words('english'))
+
+nltk.download('stopwords')
 
 #df = pd.read_csv('mum.csv',sep=";", encoding='cp1252',error_bad_lines=False)
 
