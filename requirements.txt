@@ -9,7 +9,7 @@ ftfy
 flask
 docx
 scikit-learn
-spacy==2.3.5
+spacy
 tqdm
 selenium
 bs4
@@ -92,10 +92,10 @@ smart-open==5.2.1
 sniffio==1.2.0
 sortedcontainers==2.4.0
 soupsieve==2.3.2.post1
-spacy==2.3.5
+spacy
 spacy-legacy==3.0.10
 spacy-loggers==1.0.3
-srsly==2.4.4
+srsly
 thinc==7.4.5
 threadpoolctl==3.1.0
 tomli==2.0.1
