@@ -9,7 +9,7 @@ ftfy
 flask
 docx
 scikit-learn
-spacy
+spacy=2.3.5
 tqdm
 selenium
 bs4
