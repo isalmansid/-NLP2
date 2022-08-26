@@ -16,7 +16,9 @@ from sklearn.neighbors import NearestNeighbors
 stopw = nltk.corpus.stopwords.words('english')
 #print(stopwords[:10])
 
-nl = nltk.download('stopwords')
+
+nltk.download('stopwords')
+spacy.load("en_core_web_sm")
 
 #df = pd.read_csv('mum.csv',sep=";", encoding='cp1252',error_bad_lines=False)
 
