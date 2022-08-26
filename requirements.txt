@@ -3,6 +3,7 @@ numpy
 python-docx
 docx
 pandas
+spacy-legacy
 nltk
 sklearn
 ftfy
