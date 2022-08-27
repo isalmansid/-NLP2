@@ -5,29 +5,89 @@ import numpy as np
 import pandas as pd
 import re
 from ftfy import fix_text
-import nltk
+import joblib
 from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk import WordNetLemmatizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
+import spacy
+#nlp = spacy.load("en_core_web_sm")
+#nlp = en_core_web_sm.load()
 
-#stopw = set(stopwords.words('english'))
+#nltk.download()
 
-stopw = nltk.corpus.stopwords.words('english')
+#spacy.load("en_core_web_sm")
+#spacy.load('en_core_web_sm')
+
+
+#import en_core_web_sm
+
+#nltk.download('stopwords')
+
+import os as _os
+from nltk.corpus import stopwords
+from nltk import download as nltk_download
+
+
+
+
+#get_project_root_path():
+
+#from nltk.data import path as nltk_path
+#nltk_path.append( _os.path.join(get_project_root_path(), 'temp'))
+
+import nltk
+nltk_download('stopwords', download_dir=_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),'temp'), raise_on_error=True)
+
+
+#nltk.download('stopwords')
+#nltk.download('stopwords',download_dir='D:\\7th sem IT\\pycharm projects\\NLP')
+
+stop_words = set(stopwords.words('english'))
+#stop_words = pd.read_csv('stopwords.csv')
+
+
+
+#stopw = nltk.corpus.stopwords.words('stopwords.csv')
 #print(stopwords[:10])
 
 
-nltk.download('stopwords')
-spacy.load("en_core_web_sm")
 
 #df = pd.read_csv('mum.csv',sep=";", encoding='cp1252',error_bad_lines=False)
 
-df = pd.read_csv('mum.csv')
+
+
+
+
+
+
+#
+#
+
+#
+#df = pd.read_csv('mum.csv')
+
+#
+#
+#
+
+
+df = joblib.load('mum.pkl')
+#df = pd.DataFrame()
+
+
 
 #df = pd.read_csv('mum.csv', sep='|', encoding='cp1252')
 
-df['test'] = df['Job_Description'].apply(
-    lambda x: ' '.join([word for word in str(x).split() if len(word) > 2 and word not in (stopw)]))
+#df['test'] = df['Job_Description'].apply(
+ #  lambda x: ' '.join([word for word in str(x).split() if len(word) > 2]))
+
+
+
+df['test'] = df['Job_Description'].apply(lambda x: ' '.join([word for word in str(x).split() if len(word) > 2 and word not in (stop_words)]))
+
 
 app = Flask(__name__)
 
@@ -157,15 +217,28 @@ def submit_data():
 #serve(app, host="0.0.0.0", port=8080)
 
 #server = http.createServer(app)
-
+import os
+from os import path, environ
 if __name__ == "__main__":
-    app.run()
-    #FLASK_APP = app
-    #FLASK_ENV = "development"
-    app.run(debug=True)
-    #app.run('localhost', 5000, debug=True)
+    app.debug = True
+    app.run('localhost',8080)
 
-    #app.run(host='0.0.0.0', debug=True)
+    #spacy == 3.4.1
+
+
+    #app.run('localhost', 33507)
+    #app.run('localhost', 5000)
+    #app.run(host='0.0.0.0')
+    #port = os.environ.get('PORT', 33507)
+    #app.run(port)
+    #app.run(port=process.env.PORT | port)
+
+    FLASK_APP = app
+    FLASK_ENV = "development"
+    # app.run(debug=True)
+
+
+
 
 
     #FLASK_APP = app
